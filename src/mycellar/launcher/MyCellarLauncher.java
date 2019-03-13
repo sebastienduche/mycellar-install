@@ -23,6 +23,7 @@ class MyCellarLauncher {
 	private MyCellarLauncher() {
 		
 		File myCellarFile = new File("MyCellar.jar");
+		File directory = null;
 		boolean install = true;
 		if (myCellarFile.exists()) {
 			install = JOptionPane.YES_OPTION == showConfirmDialog(null, "A version of MyCellar already exist in this directory.\nDo you want to reinstall it",
@@ -34,8 +35,8 @@ class MyCellarLauncher {
 		}
     	if (install) {
 				Server.Debug("New Installation...");
-    		boolean installError = install();
-    		if (installError) {
+    		directory = install();
+    		if (directory == null) {
         		System.exit(1);
     		} else {
     			Server.Debug("Installation Done");
@@ -44,6 +45,7 @@ class MyCellarLauncher {
     		
         try {
 					ProcessBuilder pb = new ProcessBuilder("java","-Dfile.encoding=UTF8","-jar","MyCellar.jar");
+					pb.directory(directory);
 					pb.redirectErrorStream(true);
 					Process p = pb.start();
 					p.waitFor();
@@ -78,7 +80,7 @@ class MyCellarLauncher {
 		System.exit(999);
 	}
 	
-	private boolean install() {
+	private File install() {
 		return Server.getInstance().install();
 	}
 

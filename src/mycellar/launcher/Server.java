@@ -398,7 +398,7 @@ public class Server implements Runnable {
 		e.printStackTrace();
 	}
 
-	boolean install() {
+	File install() {
 		Debug("Installing MyCellar...");
 		File directory = getDirectoryForInstall();
 		try {
@@ -407,7 +407,7 @@ public class Server implements Runnable {
 					Files.createDirectories(directory.toPath());
 				}
 			} else {
-				return false;
+				return null;
 			}
 			File f = new File(directory, "lib");
 			Files.createDirectory(f.toPath());
@@ -415,7 +415,7 @@ public class Server implements Runnable {
 			Files.createDirectory(f.toPath());
 		}catch (IOException e) {
 			showException(e);
-			return false;
+			return null;
 		}
 
 		FILE_TYPES.clear();
@@ -444,9 +444,12 @@ public class Server implements Runnable {
 		FILE_TYPES.add(new FileType("MyCellarLauncher.jar",""));
 		FILE_TYPES.add(new FileType("Finish.html",""));
 		boolean result = downloadFromGitHub(directory);
-		
-		Debug("Installation of MyCellar Done.");
-		return result;
+		if(result) {
+			Debug("Installation of MyCellar Done.");
+			return directory;
+		}
+		Debug("ERROR: Installation of MyCellar KO.");
+		return null;
 	}
 	
 	private File getDirectoryForInstall() {
