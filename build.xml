@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="build_install" name="Create Runnable Jar for Project Installing MyCellar">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="build_install">
+    	<delete dir="./Build/lib"/>
+			<mkdir dir="./Build/lib"/>
+
+    	<mkdir dir="./Build"/>
+    	<jar destfile="./Build/MyCellarInstall.jar">
+					<manifest>
+							<attribute name="Main-Class" value="mycellar.launcher.MyCellarLauncher"/>
+							<attribute name="Class-Path" value="."/>
+					</manifest>
+					<fileset dir="./bin">
+					</fileset>
+			</jar>
+    </target>
+</project>
