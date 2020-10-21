@@ -3,6 +3,7 @@ package mycellar.launcher;
 import javax.swing.JOptionPane;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.showConfirmDialog;
@@ -48,7 +49,7 @@ class MyCellarLauncher {
 					pb.directory(directory);
 					pb.redirectErrorStream(true);
 					Process p = pb.start();
-					p.waitFor();
+					p.waitFor(10, TimeUnit.SECONDS);
         } catch (IOException | InterruptedException ex) {
             showException(ex);
         }

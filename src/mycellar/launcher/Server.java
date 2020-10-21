@@ -293,7 +293,7 @@ public class Server implements Runnable {
 			download.setValue(100);
 			download.dispose();
 		}
-		return bDownloadError;
+		return !bDownloadError;
 	}
 
 	public void downloadFileFromGitHub(String name, String destination) throws IOException {
@@ -426,17 +426,20 @@ public class Server implements Runnable {
 		FILE_TYPES.add(new FileType("lib/jcommon-1.0.18.jar", ""));
 		FILE_TYPES.add(new FileType("lib/jdom1.0.jar", ""));
 		FILE_TYPES.add(new FileType("lib/jfreechart-1.0.15.jar", ""));
-		FILE_TYPES.add(new FileType("lib/jxl.jar", ""));
 		FILE_TYPES.add(new FileType("lib/mailapi.jar", ""));
 		FILE_TYPES.add(new FileType("lib/miglayout-4.0-swing.jar", ""));
 		FILE_TYPES.add(new FileType("lib/pdfbox-app-2.0.5.jar", ""));
 		FILE_TYPES.add(new FileType("lib/smtp.jar", ""));
+    FILE_TYPES.add(new FileType("lib/commons-collections4-4.2.jar", ""));
+    FILE_TYPES.add(new FileType("lib/commons-compress-1.18.jar", ""));
 		FILE_TYPES.add(new FileType("lib/poi-4.0.0.jar", ""));
 		FILE_TYPES.add(new FileType("lib/poi-ooxml-4.0.0.jar", ""));
 		FILE_TYPES.add(new FileType("lib/poi-ooxml-schemas-4.0.0.jar", ""));
 		FILE_TYPES.add(new FileType("lib/xmlbeans-3.0.1.jar", ""));
-		FILE_TYPES.add(new FileType("lib/commons-collections4-4.2.jar", ""));
-		FILE_TYPES.add(new FileType("lib/commons-compress-1.18.jar", ""));
+		FILE_TYPES.add(new FileType("lib/activation-1.0.2.jar", ""));
+		FILE_TYPES.add(new FileType("lib/jaxb-api-2.3.0.jar", ""));
+		FILE_TYPES.add(new FileType("lib/jaxb-core-2.3.0.1.jar", ""));
+		FILE_TYPES.add(new FileType("lib/jaxb-impl-2.3.1.jar", ""));
 		
 		FILE_TYPES.add(new FileType("config/config.ini", ""));
 
