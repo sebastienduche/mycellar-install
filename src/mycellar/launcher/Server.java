@@ -410,9 +410,13 @@ public class Server implements Runnable {
 				return null;
 			}
 			File f = new File(directory, "lib");
-			Files.createDirectory(f.toPath());
+			if (!f.exists()) {
+				Files.createDirectories(f.toPath());
+			}
 			f = new File(directory, "config");
-			Files.createDirectory(f.toPath());
+			if (!f.exists()) {
+				Files.createDirectories(f.toPath());
+			}
 		}catch (IOException e) {
 			showException(e);
 			return null;
