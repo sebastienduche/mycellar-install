@@ -419,17 +419,17 @@ public class Server implements Runnable {
 		}
 
 		FILE_TYPES.clear();
-		FILE_TYPES.add(new FileType("lib/commons-io-2.1.jar", ""));
-		FILE_TYPES.add(new FileType("lib/commons-lang-2.1.jar", ""));
+		FILE_TYPES.add(new FileType("lib/commons-io-2.4.jar", ""));
+		FILE_TYPES.add(new FileType("lib/commons-lang3-3.9.jar", ""));
 		FILE_TYPES.add(new FileType("lib/commons-logging.jar", ""));
 		FILE_TYPES.add(new FileType("lib/commons-net-3.0.1.jar", ""));
 		FILE_TYPES.add(new FileType("lib/jcommon-1.0.18.jar", ""));
 		FILE_TYPES.add(new FileType("lib/jdom1.0.jar", ""));
 		FILE_TYPES.add(new FileType("lib/jfreechart-1.0.15.jar", ""));
-		FILE_TYPES.add(new FileType("lib/mailapi.jar", ""));
+		FILE_TYPES.add(new FileType("lib/commons-text-1.9.jar", ""));
 		FILE_TYPES.add(new FileType("lib/miglayout-4.0-swing.jar", ""));
 		FILE_TYPES.add(new FileType("lib/pdfbox-app-2.0.5.jar", ""));
-		FILE_TYPES.add(new FileType("lib/smtp.jar", ""));
+		FILE_TYPES.add(new FileType("lib/github-api-1.117.jar", ""));
     FILE_TYPES.add(new FileType("lib/commons-collections4-4.2.jar", ""));
     FILE_TYPES.add(new FileType("lib/commons-compress-1.18.jar", ""));
 		FILE_TYPES.add(new FileType("lib/poi-4.0.0.jar", ""));
@@ -440,6 +440,9 @@ public class Server implements Runnable {
 		FILE_TYPES.add(new FileType("lib/jaxb-api-2.3.0.jar", ""));
 		FILE_TYPES.add(new FileType("lib/jaxb-core-2.3.0.1.jar", ""));
 		FILE_TYPES.add(new FileType("lib/jaxb-impl-2.3.1.jar", ""));
+		FILE_TYPES.add(new FileType("lib/jackson-annotations-2.10.2.jar", ""));
+		FILE_TYPES.add(new FileType("lib/jackson-core-2.10.2.jar", ""));
+		FILE_TYPES.add(new FileType("lib/jackson-databind-2.10.2.jar", ""));
 		
 		FILE_TYPES.add(new FileType("config/config.ini", ""));
 
