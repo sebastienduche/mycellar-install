@@ -37,8 +37,8 @@ import static mycellar.launcher.Server.Action.NONE;
  * Copyright : Copyright (c) 2011
  * Société : Seb Informatique
  * @author Sébastien Duché
- * @version 2.5
- * @since 27/01/21
+ * @version 2.6
+ * @since 08/02/21
  */
 
 public class Server implements Runnable {
@@ -141,7 +141,7 @@ public class Server implements Runnable {
 						file = split[0];
 						md5 = split[1];
 					}
-					Debug("sFile... " + file);
+					Debug("File... " + file);
 					boolean lib = (!file.contains(MY_CELLAR) && file.endsWith(".jar"));
 					FILE_TYPES.add(new FileType(file, md5, lib));
 					file = bufferedReader.readLine();
@@ -405,12 +405,24 @@ public class Server implements Runnable {
 		FILE_TYPES.add(new FileType("MyCellarLauncher.jar",""));
 		FILE_TYPES.add(new FileType("Finish.html",""));
 		boolean error = downloadFromGitHub(directory.getPath());
+		setLocalVersion(directory);
 		if(!error) {
 			Debug("Installation of MyCellar Done.");
 			return directory;
 		}
 		Debug("ERROR: Installation of MyCellar KO.");
 		return null;
+	}
+	
+	private void setLocalVersion(File directory) {
+		File f = new File(directory, "MyCellarVersion.txt");
+		try (FileWriter writer = new FileWriter(f)) {
+			writer.write(serverVersion);
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	private File getDirectoryForInstall() {
@@ -426,7 +438,7 @@ public class Server implements Runnable {
 			JFileChooser fileChooser =  new JFileChooser();
 			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			if (JFileChooser.APPROVE_OPTION == fileChooser.showSaveDialog(panel)) {
-				File selectedFile = fileChooser.getSelectedFile();
+				File selectedFile = fileChooser.getCurrentDirectory();
 				text.setText(selectedFile.getAbsolutePath());
 			}
 		});
